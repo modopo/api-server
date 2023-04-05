@@ -2,10 +2,10 @@
 
 const express = require('express');
 const router = express.Router();
-const Employee = require('../models/employee')
+const Employee = require('../models/employee');
 
 router.get('/', readAllEmployee);
-router.get('/:id', readAEmployee);
+router.get('/:id', readAnEmployee);
 router.post('/', createEmployee);
 router.put('/:id', updateEmployee);
 router.delete('/:id', deleteEmployee);
@@ -15,23 +15,45 @@ async function readAllEmployee(request, response, next) {
   response.json(data);
 }
 
-async function readAEmployee(request, response, next) {
+async function readAnEmployee(request, response, next) {
+  let id = request.params.id;
+  const allEmployees = await Employee.findAll({
+    where: {
+      id: id
+    }
+  })
 
+  response.json(allEmployees);
 }
 
 async function createEmployee(request, response, next) {
-  const person = await Employee.create(request.body);
-  response.json(person);
+  console.log("request body is here", request.body);
+
+  const newEmployee = await Employee.create(request.body);
+  response.json(newEmployee);
 }
 
-function updateEmployee(request, response, next) {
-  
-  response.json(person);
+async function updateEmployee(request, response, next) {
+  let id = request.params.id;
+  const updatedEmployee = await Employee.update(request.body, {
+    where: {
+      id: id
+    }
+  })
 
+  response.json(updatedEmployee);
 }
 
-function deleteEmployee(request, response, next) {
+async function deleteEmployee(request, response, next) {
+  let id = request.params.id;
 
+  const deletedEmployee = await Employee.destroy({
+    where: {
+      id: id
+    }
+  });
+
+  response.json(deletedEmployee);
 }
 
 module.exports = router;
