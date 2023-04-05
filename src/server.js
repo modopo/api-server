@@ -12,6 +12,7 @@ const jobTitleRouter = require('./routes/job-title');
 const employeeRouter = require('./routes/employee');
 
 app.use(cors());
+app.use(express.json());
 app.use(logger);
 
 

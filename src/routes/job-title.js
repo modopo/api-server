@@ -16,21 +16,44 @@ async function readAllJobTitle(request, response, next) {
 }
 
 async function readAJobTitle(request, response, next) {
+  let id = request.params.id;
+  const allJobTitles = await JobTitle.findAll({
+    where: {
+      id: id
+    }
+  })
 
+  response.json(allJobTitles);
 }
 
 async function createJobTitle(request, response, next) {
-  const person = await JobTitle.create(request.body);
-  response.json(person);
+  console.log("request body is here", request.body);
+
+  const jobTitle = await JobTitle.create(request.body);
+  response.json(jobTitle);
 }
 
-function updateJobTitle(request, response, next) {
-  response.json(person);
+async function updateJobTitle(request, response, next) {
+  let id = request.params.id;
+  const updatedJobTitle = await JobTitle.update(request.body, {
+    where: {
+      id: id
+    }
+  })
 
+  response.json(updatedJobTitle);
 }
 
-function deleteJobTitle(request, response, next) {
+async function deleteJobTitle(request, response, next) {
+  let id = request.params.id;
 
+  const deletedJobTitle = await JobTitle.destroy({
+    where: {
+      id: id
+    }
+  });
+
+  response.json(deletedJobTitle);
 }
 
 module.exports = router;
