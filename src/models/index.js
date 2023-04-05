@@ -1,12 +1,7 @@
 'use strict';
 
-require('dotenv');
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('db_401', process.env.DB_USER, process.env.DB_PASS, {
-  host: 'localhost',
-  port: 5432,
-  dialect: 'postgres',
-  logging: false
-})
+require('dotenv').config();
+const { Sequelize } = require('sequelize');
+const sequelize = new Sequelize(`postgres://${process.env.DB_USER}:${process.env.DB_PASS}@localhost:5432/db_401`)
 
 module.exports = sequelize;

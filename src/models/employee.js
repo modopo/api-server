@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 const sequelize = require('./index');
+const DataTypes = require('sequelize');
 
 const Employee = sequelize.define("Employee", {
   name: {
@@ -14,10 +15,6 @@ const Employee = sequelize.define("Employee", {
   },
   employed: {
     type: DataTypes.BOOLEAN,
-    allowNull: false
-  },
-  title: {
-    type: DataTypes.STRING,
     allowNull: false
   }
 });
