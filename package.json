@@ -6,7 +6,7 @@
   "scripts": {
     "init:config": "sequelize init:config",
     "db:create": "sequelize db:create",
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
