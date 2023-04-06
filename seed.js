@@ -5,8 +5,6 @@ const Employee = require('./src/models/employee');
 const JobTitle = require('./src/models/job-title');
 
 sequelize.sync().then(async () => {
-  console.log('DB initd');
-
   let newEmployee = await Employee.create({
     name: "Test",
     age: 30,
@@ -19,6 +17,5 @@ sequelize.sync().then(async () => {
     salary: 500000
   })
 
-  console.log("NEW EMPLOYEE", newEmployee, "NEW TITLE", newTitle);
-
 }).catch(error => console.log(error));
+

@@ -1,8 +1,30 @@
 'use strict';
 
+const sequelize = require('../src/models');
 const server = require('../src/server');
 const supertest = require('supertest');
 const request = supertest(server.app);
+
+beforeAll(async () => {
+  await sequelize.sync();
+});
+afterAll(async () => {
+  await sequelize.drop();
+});
+
+describe('Testing 404 errors', () => {
+  test('404 bad method', async() => {
+    let response = await request.patch('/employee');
+    expect(response.status).toEqual(404);
+    expect(response.body).toEqual({});
+  });
+
+  test('404 bad path', async() => {
+    let response = await request.get('/taco');
+    expect(response.status).toEqual(404);
+    expect(response.body).toEqual({});
+  });
+});
 
 describe('Testing GET routes', () => {
   
