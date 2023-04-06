@@ -3,6 +3,7 @@
 require('dotenv').config();
 const server = require('./src/server');
 const sequelize = require('./src/models/index');
+const seed = require()
 
 sequelize.sync()
   .then(() => {
@@ -11,3 +12,4 @@ sequelize.sync()
   .catch(err => {
     console.log("SQL CONNECTING ERROR: ", err);
   });
+
