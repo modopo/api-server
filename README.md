@@ -1,7 +1,8 @@
-# basic-express-server
+# api-server
 
-Deployment: https://basic-express-server-v5gx.onrender.com/
+Deployment: https://api-server-372s.onrender.com
+Endpoints are `/employee` or `/job-title`
 
-PR: https://github.com/modopo/basic-express-server/pull/6
+PR: https://github.com/modopo/api-server/pull/8
 
-GitHub Action: https://github.com/modopo/basic-express-server/actions/runs/4615023357/jobs/8158512935
+GitHub Action: https://github.com/modopo/api-server/actions/runs/4625744439
