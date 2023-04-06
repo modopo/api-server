@@ -1,11 +1,14 @@
 'use strict';
 
+/** Populate database with initial data for testing **/
+
 const sequelize = require('./src/models/index');
 const Employee = require('./src/models/employee');
 const JobTitle = require('./src/models/job-title');
 
 
 function init() {
+  //Creates a test Employee object
   sequelize.sync().then(async () => {
     let newEmployee = await Employee.create({
       name: "someTest",
@@ -14,6 +17,7 @@ function init() {
     })
   }).catch(error => console.log(error));
 
+  //Creates a test User object
   sequelize.sync().then(async () => {
     let newTitle = await JobTitle.create({
       title: "CEO",

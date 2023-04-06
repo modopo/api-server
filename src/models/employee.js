@@ -3,6 +3,7 @@
 const sequelize = require('./index');
 const DataTypes = require('sequelize');
 
+//schema for Employee
 const Employee = sequelize.define("Employee", {
   name: {
     type: DataTypes.STRING,

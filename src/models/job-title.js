@@ -3,6 +3,7 @@
 const sequelize = require('./index');
 const DataTypes = require('sequelize');
 
+//schema for JobTitle
 const JobTitle = sequelize.define("Job Title", {
   title: {
     type: DataTypes.STRING,

@@ -4,11 +4,14 @@ const express = require('express');
 const router = express.Router();
 const JobTitle = require('../models/job-title');
 
+// Route Methods //
 router.get('/', readAllJobTitle);
 router.get('/:id', readAJobTitle);
 router.post('/', createJobTitle);
 router.put('/:id', updateJobTitle);
 router.delete('/:id', deleteJobTitle);
+
+/*** JobTitle Middleware ***/
 
 async function readAllJobTitle(request, response, next) {
   let data = await JobTitle.findAll();
