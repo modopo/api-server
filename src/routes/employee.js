@@ -12,7 +12,7 @@ router.delete('/:id', deleteEmployee);
 
 async function readAllEmployee(request, response, next) {
   let data = await Employee.findAll();
-  response.json(data);
+  response.status(200).json(data);
 }
 
 async function readAnEmployee(request, response, next) {
@@ -23,14 +23,12 @@ async function readAnEmployee(request, response, next) {
     }
   })
 
-  response.json(allEmployees);
+  response.status(200).json(allEmployees);
 }
 
 async function createEmployee(request, response, next) {
-  console.log("request body is here", request.body);
-
   const newEmployee = await Employee.create(request.body);
-  response.json(newEmployee);
+  response.status(201).json(newEmployee);
 }
 
 async function updateEmployee(request, response, next) {
@@ -41,7 +39,7 @@ async function updateEmployee(request, response, next) {
     }
   })
 
-  response.json(updatedEmployee);
+  response.status(200).json(updatedEmployee);
 }
 
 async function deleteEmployee(request, response, next) {
@@ -53,7 +51,7 @@ async function deleteEmployee(request, response, next) {
     }
   });
 
-  response.json(deletedEmployee);
+  response.status(200).json(deletedEmployee);
 }
 
 module.exports = router;

@@ -16,8 +16,8 @@ app.use(express.json());
 app.use(logger);
 
 
-app.use('/employee', employeeRouter);
-app.use('/job-title', jobTitleRouter);
+app.use('/employee', validator, employeeRouter);
+app.use('/job-title', validator, jobTitleRouter);
 
 app.use("*", error404);
 app.use(error500);

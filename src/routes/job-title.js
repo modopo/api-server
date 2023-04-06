@@ -12,7 +12,7 @@ router.delete('/:id', deleteJobTitle);
 
 async function readAllJobTitle(request, response, next) {
   let data = await JobTitle.findAll();
-  response.json(data);
+  response.status(200).json(data);
 }
 
 async function readAJobTitle(request, response, next) {
@@ -23,14 +23,12 @@ async function readAJobTitle(request, response, next) {
     }
   })
 
-  response.json(allJobTitles);
+  response.status(200).json(allJobTitles);
 }
 
 async function createJobTitle(request, response, next) {
-  console.log("request body is here", request.body);
-
   const jobTitle = await JobTitle.create(request.body);
-  response.json(jobTitle);
+  response.status(201).json(jobTitle);
 }
 
 async function updateJobTitle(request, response, next) {
@@ -41,7 +39,7 @@ async function updateJobTitle(request, response, next) {
     }
   })
 
-  response.json(updatedJobTitle);
+  response.status(200).json(updatedJobTitle);
 }
 
 async function deleteJobTitle(request, response, next) {
@@ -53,7 +51,7 @@ async function deleteJobTitle(request, response, next) {
     }
   });
 
-  response.json(deletedJobTitle);
+  response.status(200).json(deletedJobTitle);
 }
 
 module.exports = router;
