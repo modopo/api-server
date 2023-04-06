@@ -15,7 +15,6 @@ app.use(cors());
 app.use(express.json());
 app.use(logger);
 
-
 app.use('/employee', validator, employeeRouter);
 app.use('/job-title', validator, jobTitleRouter);
 
