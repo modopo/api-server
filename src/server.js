@@ -21,7 +21,6 @@ app.use('/job-title', validator, jobTitleRouter);
 app.use("*", error404);
 app.use(error500);
 
-
 module.exports = {
   app,
   start: (port) => {
