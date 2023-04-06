@@ -4,11 +4,14 @@ const express = require('express');
 const router = express.Router();
 const Employee = require('../models/employee');
 
+// Route Methods //
 router.get('/', readAllEmployee);
 router.get('/:id', readAnEmployee);
 router.post('/', createEmployee);
 router.put('/:id', updateEmployee);
 router.delete('/:id', deleteEmployee);
+
+/*** Employee Middleware ***/
 
 async function readAllEmployee(request, response, next) {
   let data = await Employee.findAll();
