@@ -1,6 +1,5 @@
 'use strict';
 
-require('dotenv').config();
 const sequelize = require('./index');
 const DataTypes = require('sequelize');
 

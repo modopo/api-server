@@ -4,12 +4,13 @@ const sequelize = require('../src/models');
 const server = require('../src/server');
 const supertest = require('supertest');
 const request = supertest(server.app);
+const seed = require('../seed');
 
 beforeAll(async () => {
-  await sequelize.sync();
+  seed();
 });
 afterAll(async () => {
-  await sequelize.drop();
+  await sequelize.drop({});
 });
 
 describe('Testing 404 errors', () => {
@@ -26,7 +27,7 @@ describe('Testing 404 errors', () => {
   });
 });
 
-describe('Testing GET routes', () => {
+describe('Testing GET all routes', () => {
   
   test('All employee should be in db', async() => {
     let response = await request.get('/employee');
@@ -37,6 +38,9 @@ describe('Testing GET routes', () => {
     let response = await request.get('/job-title');
     expect(response.body.length).toEqual(1);
   });
+});
+
+describe('Testing GET ID routes', () => {
 
   test('Read the right employee based on ID', async() => {
     let response = await request.get(`/employee/1`);
@@ -90,13 +94,13 @@ describe('Testing DELETE routes', () => {
   
   test('Deleting a employee from the employee table', async() => {
     await request.delete('/employee/2')
-    let response = await request.get('/employee/4')
+    let response = await request.get('/employee/2')
     expect(response.body).toEqual([]);
   });
 
   test('Deleting a job title from the job title', async() => {
     await request.delete('/job-title/2')
-    let response = await request.get('/job-title/4')
+    let response = await request.get('/job-title/2')
     expect(response.body).toEqual([]);
   });
 });

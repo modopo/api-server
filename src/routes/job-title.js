@@ -27,8 +27,8 @@ async function readAJobTitle(request, response, next) {
 }
 
 async function createJobTitle(request, response, next) {
-  const jobTitle = await JobTitle.create(request.body);
-  response.status(201).json(jobTitle);
+  const newJobTitle = await JobTitle.create(request.body);
+  response.status(201).json(newJobTitle);
 }
 
 async function updateJobTitle(request, response, next) {
