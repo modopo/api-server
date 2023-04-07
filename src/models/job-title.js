@@ -1,9 +1,8 @@
 'use strict';
 
-const sequelize = require('./index');
 const DataTypes = require('sequelize');
 
-const JobTitle = sequelize.define("Job Title", {
+const JobTitle = (sequelize) => sequelize.define("Job Title", {
   title: {
     type: DataTypes.STRING,
     allowNull: false

@@ -1,23 +1,21 @@
 'use strict';
 
-const sequelize = require('./src/models/index');
-const Employee = require('./src/models/employee');
-const JobTitle = require('./src/models/job-title');
+const { Employee, JobTitle, sequelize } = require('./src/models');
 
 async function init() {
   await sequelize.sync().then(async () => {
-    let newEmployee = await Employee.create({
-      name: "someTest",
-      age: 30,
-      employed: true
-    })
-
     let newTitle = await JobTitle.create({
       title: "CEO",
       perks: "Free coffee",
       salary: 500000
     })
 
+    let newEmployee = await Employee.create({
+      name: "Jeff Bezos",
+      age: 58,
+      employed: false,
+      jobTitleId: 1
+    })
   }).catch(error => console.log(error));
 
 }

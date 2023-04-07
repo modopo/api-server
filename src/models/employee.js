@@ -1,9 +1,8 @@
 'use strict';
 
-const sequelize = require('./index');
 const DataTypes = require('sequelize');
 
-const Employee = sequelize.define("Employee", {
+const Employee = (sequelize) => sequelize.define("Employee", {
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -14,6 +13,10 @@ const Employee = sequelize.define("Employee", {
   },
   employed: {
     type: DataTypes.BOOLEAN,
+    allowNull: false
+  },  
+  jobTitleId: {
+    type: DataTypes.INTEGER,
     allowNull: false
   }
 });
