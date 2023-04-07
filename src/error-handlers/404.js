@@ -1,10 +1,11 @@
 'use strict';
 
 function error404(request, response, next) {
-  if(request.method !== "GET") {
-    response.status(404).send("GET methods only for now");
-  } else if (!request.path.includes('/person')) {
-    response.status(404).send("No such path");
+  if (!['GET', 'POST', 'PUT', 'DELETE'].includes(request.method)) {
+    response.status(404).send("404 bad method");
+  } else if (!['/employee', '/job-title'].includes(request.baseUrl)) {
+    console.log(request.baseUrl);
+    response.status(404).send("404 bad path");
   } else {
     next();
   }
